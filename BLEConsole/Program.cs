@@ -175,7 +175,7 @@ namespace BLEConsole
             var bluetoothLEDevice = await BluetoothLEDevice.FromIdAsync(id);
             GattDeviceServicesResult gatServiceAsync = await bluetoothLEDevice.GetGattServicesAsync(BluetoothCacheMode.Uncached);
 
-            if (gatServiceAsync.Status == GattCommunicationStatus.Success && args.Name == "SR800+")
+            if (gatServiceAsync.Status == GattCommunicationStatus.Success && args.Name == "SR800+" && devicex == null )
             {
                 devicex = args;
                 Console.WriteLine(args.Name + " device found");
