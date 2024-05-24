@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics.Eventing.Reader;
 using Windows.Foundation;
 using System.Diagnostics;
+using Windows.UI.Xaml;
 
 
 namespace BLEConsole
@@ -53,6 +54,8 @@ namespace BLEConsole
                 if ( devicex == null )
                 {
                     Thread.Sleep(500);
+                   // Console.ReadKey();
+                    // Console.WriteLine("Press any key to exit");
                 }
                 else
                 {
@@ -116,8 +119,22 @@ namespace BLEConsole
                         {
                             Console.WriteLine(service.Uuid);
                         }
+
+                        Console.WriteLine("Connection status is ..... " + bluetoothLeDevice.ConnectionStatus);
+                        Console.WriteLine("Press any key to exit");
+                        ConsoleKeyInfo keyinfo= Console.ReadKey();
+                        while (true)
+                        {
+                            if (keyinfo.Key != ConsoleKey.NoName)
+                            {
+                                Environment.Exit(0);
+                              
+                            }
+                            
+                           // Console.ReadKey();
+                        }
                     }
-                    Console.WriteLine("Connection status is ..... " + bluetoothLeDevice.ConnectionStatus);
+                   // Console.WriteLine("Connection status is ..... " + bluetoothLeDevice.ConnectionStatus);
 
                     /*        
                     var customPairing = devicex.Pairing.Custom;
@@ -143,6 +160,7 @@ namespace BLEConsole
             {
                 Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
+
             }
 
         }
